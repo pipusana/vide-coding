@@ -5,7 +5,35 @@ import Header from '@/components/header'
 import DailyColorSection from '@/components/daily-color-section'
 import DailyFortune from '@/components/daily-fortune'
 import ProductRecommendations from '@/components/product-recommendations'
-import { Facebook, Instagram, Twitter, Youtube, MessageCircle } from 'lucide-react'
+
+// E-commerce & Fashion Brand Logo Components
+const ShopeeLogo = () => (
+  <svg className="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
+    <path d="M12 2L3.09 8.26l1.64 1.15L12 4.6l7.27 4.81 1.64-1.15L12 2zM12 8c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm0 6c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm7.5 6.5h-15c-.83 0-1.5-.67-1.5-1.5V12c0-.83.67-1.5 1.5-1.5h3v2H6v6h12v-6h-1.5v-2h3c.83 0 1.5.67 1.5 1.5v7.5c0 .83-.67 1.5-1.5 1.5z"/>
+  </svg>
+)
+
+const LazadaLogo = () => (
+  <svg className="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
+    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm5.5 13.5c0 .83-.67 1.5-1.5 1.5H8c-.83 0-1.5-.67-1.5-1.5v-3c0-.83.67-1.5 1.5-1.5h8c.83 0 1.5.67 1.5 1.5v3zm-1.5-2.5h-6v1h6v-1zm-6-1h6v-1h-6v1z"/>
+  </svg>
+)
+
+const UniqloLogo = () => (
+  <svg className="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
+    <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+    <path d="M8 8h8v8H8z" fill="white"/>
+    <path d="M10 10v4h4v-4h-4z" fill="currentColor"/>
+  </svg>
+)
+
+const HMLogo = () => (
+  <svg className="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
+    <path d="M3 3h18v18H3V3z"/>
+    <path d="M6 6h3v3H6V6zm0 6h3v3H6v-3zm9-6h3v3h-3V6zm0 6h3v3h-3v-3z" fill="white"/>
+    <text x="12" y="16" fontSize="4" textAnchor="middle" fill="white" fontWeight="bold">H&M</text>
+  </svg>
+)
 
 export default function Home() {
   const [selectedDate, setSelectedDate] = useState(new Date())
@@ -198,26 +226,29 @@ export default function Home() {
             </div>
             
             <p className="text-2xl text-gray-200 font-bold mb-12 max-w-3xl mx-auto">
-            เทคโนโลยี AI ผสานกับภูมิปัญญาไทย
+             เทคโนโลยี AI ผสานกับภูมิปัญญาไทย
               <br />
               <span className="text-transparent bg-gradient-to-r from-yellow-300 to-orange-300 bg-clip-text">เพื่อชีวิตที่เต็มไปด้วยสีสัน</span>
             </p>
 
-            {/* Enhanced Social Links */}
+            {/* Partner Brands */}
             <div className="flex justify-center gap-6 mb-12">
               {[
-                { icon: <Facebook className="h-6 w-6 text-white" />, label: "Facebook", color: "from-blue-600 to-blue-700", hover: "hover:from-blue-500 hover:to-blue-600" },
-                { icon: <Instagram className="h-6 w-6 text-white" />, label: "Instagram", color: "from-pink-600 to-purple-700", hover: "hover:from-pink-500 hover:to-purple-600" },
-                { icon: <Twitter className="h-6 w-6 text-white" />, label: "Twitter", color: "from-sky-600 to-blue-700", hover: "hover:from-sky-500 hover:to-blue-600" },
-                { icon: <Youtube className="h-6 w-6 text-white" />, label: "YouTube", color: "from-red-600 to-red-700", hover: "hover:from-red-500 hover:to-red-600" },
-                { icon: <MessageCircle className="h-6 w-6 text-white" />, label: "Line", color: "from-green-600 to-emerald-700", hover: "hover:from-green-500 hover:to-emerald-600" }
-              ].map((social, index) => (
-                <button key={index} className={`group relative w-16 h-16 bg-gradient-to-br ${social.color} ${social.hover} rounded-2xl flex items-center justify-center shadow-2xl transition-all duration-500 hover:scale-110 hover:-translate-y-2`}>
-                  <span className="group-hover:scale-125 transition-transform duration-300">{social.icon}</span>
-                  <div className={`absolute inset-0 bg-gradient-to-br ${social.color} rounded-2xl opacity-0 group-hover:opacity-50 transition-opacity duration-500 blur-xl`}></div>
+                { icon: <ShopeeLogo />, label: "Shopee", color: "from-orange-600 to-red-600", hover: "hover:from-orange-500 hover:to-red-500" },
+                { icon: <LazadaLogo />, label: "Lazada", color: "from-blue-600 to-indigo-600", hover: "hover:from-blue-500 hover:to-indigo-500" },
+                { icon: <UniqloLogo />, label: "Uniqlo", color: "from-red-600 to-pink-600", hover: "hover:from-red-500 hover:to-pink-500" },
+                { icon: <HMLogo />, label: "H&M", color: "from-purple-600 to-pink-600", hover: "hover:from-purple-500 hover:to-pink-500" }
+              ].map((brand, index) => (
+                <button key={index} className={`group relative w-16 h-16 bg-gradient-to-br ${brand.color} ${brand.hover} rounded-2xl flex items-center justify-center shadow-2xl transition-all duration-500 hover:scale-110 hover:-translate-y-2`}>
+                  <span className="text-white group-hover:scale-125 transition-transform duration-300">{brand.icon}</span>
+                  <div className={`absolute inset-0 bg-gradient-to-br ${brand.color} rounded-2xl opacity-0 group-hover:opacity-50 transition-opacity duration-500 blur-xl`}></div>
                 </button>
               ))}
             </div>
+            
+            <p className="text-lg text-gray-300 font-semibold">
+              🛍️ พาร์ทเนอร์สำหรับช้อปปิ้งเสื้อผ้าสีมงคล
+            </p>
           </div>
           
           <div className="border-t border-gray-700/50 pt-12 text-center">
