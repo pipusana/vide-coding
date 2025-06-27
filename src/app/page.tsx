@@ -133,14 +133,14 @@ export default function Home() {
             <div className="relative group">
               <div className="absolute inset-0 bg-gradient-to-r from-emerald-500/20 to-teal-500/20 rounded-3xl blur-xl group-hover:blur-2xl transition-all duration-500"></div>
               <div className="relative animate-slide-up" style={{ animationDelay: '0.4s' }}>
-                <DailyFortune />
+                <DailyFortune selectedDate={selectedDate} />
               </div>
             </div>
             
             <div className="relative group">
               <div className="absolute inset-0 bg-gradient-to-r from-pink-500/20 to-rose-500/20 rounded-3xl blur-xl group-hover:blur-2xl transition-all duration-500"></div>
               <div className="relative animate-slide-up" style={{ animationDelay: '0.6s' }}>
-                <ProductRecommendations />
+                <ProductRecommendations selectedDate={selectedDate} />
               </div>
             </div>
           </div>
