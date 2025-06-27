@@ -3,6 +3,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import DatePicker from "./date-picker"
 import { getDayOfWeek, getThaiDate } from "@/lib/utils"
+import { Sparkles, Calendar, Info, Palette } from "lucide-react"
 
 interface DayInfo {
   day: string
@@ -145,136 +146,151 @@ export default function DailyColorSection({ selectedDate, onDateChange }: DailyC
 
   return (
     <div className="space-y-8">
-      {/* Date Selection */}
-      <div className="flex flex-col lg:flex-row gap-6">
-        <div className="flex-1">
-          {/* Main Day Section */}
-          <Card className={`bg-gradient-to-br ${dayInfo.gradient} text-white shadow-2xl border-0 ring-1 ring-white/20`}>
-            <CardHeader className="pb-6">
-              <CardTitle className="text-3xl font-bold mb-2">
-                {dayInfo.day}
-              </CardTitle>
-              <p className="text-white/95 text-lg font-semibold">
-                {dayInfo.description}
-              </p>
-              <p className="text-white/90 text-base font-medium">
-                {selectedThaiDate}
-              </p>
-            </CardHeader>
-          </Card>
-        </div>
-        
-        {/* Date Picker */}
-        <div className="lg:w-80">
-          <DatePicker 
-            selectedDate={selectedDate}
-            onDateChange={onDateChange}
-          />
-        </div>
+      {/* Date Picker Section - Always visible and accessible */}
+      <div className="relative z-20">
+        <DatePicker 
+          selectedDate={selectedDate}
+          onDateChange={onDateChange}
+        />
       </div>
 
-      {/* Daily Information */}
-      <Card className="bg-white/90 backdrop-blur-sm shadow-xl border-0 ring-1 ring-purple-200/50">
-        <CardContent className="p-8">
-          <div className="flex flex-col lg:flex-row gap-8 items-start">
-            <div className="flex-1 space-y-6">
-              <div>
-                <h3 className="font-bold text-3xl mb-4 text-gray-900">ความหมาย</h3>
-                <div className="space-y-4">
-                  {dayInfo.details.map((detail, index) => (
-                    <p key={index} className="text-gray-800 text-lg leading-relaxed bg-gradient-to-r from-purple-50 to-pink-50 p-5 rounded-xl border-l-4 border-purple-500 font-medium">
-                      {detail}
-                    </p>
-                  ))}
-                </div>
-              </div>
-            </div>
-            
-            {/* Color Circle */}
-            <div className="flex flex-col items-center space-y-6">
-              <div className="relative">
-                <div className={`w-40 h-40 rounded-full ${dayInfo.colorDisplay} shadow-2xl border-8 border-white ring-4 ring-purple-200/50`}>
-                  <div className={`absolute inset-2 rounded-full bg-gradient-to-br ${dayInfo.gradient} opacity-80`}></div>
-                </div>
-                <div className="absolute -top-2 -right-2 w-8 h-8 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full flex items-center justify-center shadow-lg">
-                  <span className="text-white text-sm">✨</span>
-                </div>
-              </div>
-              <div className="text-center bg-white/95 p-4 rounded-xl shadow-lg border border-purple-200">
-                <p className="text-base font-semibold text-purple-700 mb-1">สีประจำวัน</p>
-                <p className="font-bold text-xl text-gray-900">{dayInfo.luckyColor}</p>
-              </div>
-            </div>
+      {/* Hero Color Card */}
+      <div className="relative z-10">
+        <Card className={`bg-gradient-to-br ${dayInfo.gradient} text-white shadow-2xl border-0 overflow-hidden relative`}>
+          {/* Animated Background Elements */}
+          <div className="absolute inset-0">
+            <div className="absolute top-4 right-4 w-32 h-32 bg-white/10 rounded-full blur-2xl animate-pulse"></div>
+            <div className="absolute bottom-4 left-4 w-24 h-24 bg-white/10 rounded-full blur-xl animate-pulse" style={{ animationDelay: '2s' }}></div>
           </div>
-        </CardContent>
-      </Card>
-
-      {/* Additional Daily Colors Section */}
-      <Card className="bg-white/90 backdrop-blur-sm shadow-xl border-0 ring-1 ring-purple-200/50">
-        <CardHeader className="bg-gradient-to-r from-violet-600 to-purple-600 text-white rounded-t-lg">
-          <CardTitle className="text-2xl font-bold flex items-center gap-3">
-            <span className="text-3xl">🎨</span>
-            สีมงคลและสีเสริมประจำวัน
-          </CardTitle>
-          <p className="text-violet-100 text-base font-medium">
-            สีมงคลและสีเสริมที่เหมาะสำหรับวันนี้
-          </p>
-        </CardHeader>
-        <CardContent className="p-6">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {/* Main Color */}
-            <div className="space-y-4 bg-gradient-to-br from-green-50 to-emerald-50 p-6 rounded-xl border border-green-200">
-              <h4 className="font-bold text-xl text-green-900 flex items-center gap-2">
-                <span className="w-8 h-8 bg-gradient-to-br from-green-400 to-emerald-600 rounded-full flex items-center justify-center">
-                  <span className="text-white text-sm">🎨</span>
-                </span>
-                สีหลัก
-              </h4>
-              <p className="text-gray-800 leading-relaxed text-base font-medium">
-                {dayInfo.luckyColor} - {dayInfo.description}
-              </p>
-              <div className="flex items-center gap-3">
-                <div className={`w-8 h-8 ${dayInfo.colorDisplay} rounded-full shadow-lg border-2 border-white`}></div>
-                <span className="text-base font-bold text-gray-800">{dayInfo.luckyColor}</span>
+          
+          <CardContent className="relative p-8 md:p-12">
+            <div className="flex flex-col lg:flex-row items-center gap-8">
+              {/* Left Content */}
+              <div className="flex-1 text-center lg:text-left">
+                <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full mb-6">
+                  <Calendar className="h-4 w-4" />
+                  <span className="text-sm font-medium">{selectedThaiDate}</span>
+                </div>
+                
+                <h2 className="text-4xl md:text-5xl font-bold mb-4">
+                  {dayInfo.day}
+                </h2>
+                <p className="text-xl md:text-2xl font-semibold mb-6 text-white/95">
+                  {dayInfo.description}
+                </p>
+                
+                <div className="flex flex-wrap gap-3 justify-center lg:justify-start">
+                  <div className="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full">
+                    <span className="text-sm font-medium">🎨 สีหลัก: {dayInfo.luckyColor}</span>
+                  </div>
+                  <div className="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full">
+                    <span className="text-sm font-medium">✨ เสริมดวงมงคล</span>
+                  </div>
+                </div>
               </div>
+              
+              {/* Right Color Display */}
+              <div className="flex flex-col items-center space-y-6">
+                <div className="relative group">
+                  <div className={`w-48 h-48 rounded-3xl ${dayInfo.colorDisplay} shadow-2xl border-8 border-white/30 group-hover:scale-105 transition-all duration-500`}>
+                    <div className={`absolute inset-4 rounded-2xl bg-gradient-to-br ${dayInfo.gradient} opacity-60`}></div>
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <Sparkles className="w-16 h-16 text-white animate-pulse" />
+                    </div>
+                  </div>
+                  
+                  {/* Floating Elements */}
+                  <div className="absolute -top-2 -right-2 w-12 h-12 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-2xl flex items-center justify-center shadow-lg animate-bounce">
+                    <span className="text-white text-lg">✨</span>
+                  </div>
+                  <div className="absolute -bottom-2 -left-2 w-8 h-8 bg-gradient-to-br from-pink-400 to-rose-500 rounded-full flex items-center justify-center shadow-lg animate-bounce" style={{ animationDelay: '1s' }}>
+                    <span className="text-white text-sm">🌟</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+
+      {/* Daily Information Grid */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        {/* Meaning Card */}
+        <Card className="bg-white/80 backdrop-blur-sm shadow-xl border-0 ring-1 ring-gray-200/50 hover:shadow-2xl transition-all duration-500 hover:-translate-y-1">
+          <CardHeader className="pb-4">
+            <CardTitle className="flex items-center gap-3 text-2xl text-gray-900">
+              <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-xl flex items-center justify-center">
+                <Info className="h-5 w-5 text-white" />
+              </div>
+              ความหมายและเคล็ดลับ
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            {dayInfo.details.map((detail, index) => (
+              <div key={index} className="relative p-6 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-2xl border-l-4 border-blue-500 hover:shadow-md transition-all duration-300">
+                <div className="absolute top-4 right-4 w-6 h-6 bg-blue-100 rounded-full flex items-center justify-center">
+                  <span className="text-blue-600 text-xs font-bold">{index + 1}</span>
+                </div>
+                <p className="text-gray-800 text-base leading-relaxed font-medium pr-8">
+                  {detail}
+                </p>
+              </div>
+            ))}
+          </CardContent>
+        </Card>
+
+        {/* Color Palette Card */}
+        <Card className="bg-white/80 backdrop-blur-sm shadow-xl border-0 ring-1 ring-gray-200/50 hover:shadow-2xl transition-all duration-500 hover:-translate-y-1">
+          <CardHeader className="pb-4">
+            <CardTitle className="flex items-center gap-3 text-2xl text-gray-900">
+              <div className="w-10 h-10 bg-gradient-to-br from-purple-500 to-pink-600 rounded-xl flex items-center justify-center">
+                <Palette className="h-5 w-5 text-white" />
+              </div>
+              สีมงคลวันนี้
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-6">
+            {/* Main Color */}
+            <div className="p-6 bg-gradient-to-br from-green-50 to-emerald-50 rounded-2xl border border-green-200">
+              <div className="flex items-center gap-4 mb-4">
+                <div className={`w-16 h-16 ${dayInfo.colorDisplay} rounded-2xl shadow-lg border-4 border-white`}></div>
+                <div>
+                  <h4 className="font-bold text-xl text-green-900">สีหลัก</h4>
+                  <p className="text-green-700 font-semibold">{dayInfo.luckyColor}</p>
+                </div>
+              </div>
+              <p className="text-gray-800 font-medium">
+                {dayInfo.description}
+              </p>
             </div>
 
             {/* Additional Colors */}
-            <div className="space-y-4 bg-gradient-to-br from-amber-50 to-yellow-50 p-6 rounded-xl border border-amber-200">
-              <h4 className="font-bold text-xl text-amber-900 flex items-center gap-2">
-                <span className="w-8 h-8 bg-gradient-to-br from-amber-400 to-yellow-600 rounded-full flex items-center justify-center">
-                  <span className="text-white text-sm">✨</span>
-                </span>
-                สีเสริม
-              </h4>
-              <p className="text-gray-800 leading-relaxed text-base font-medium">
+            <div className="p-6 bg-gradient-to-br from-amber-50 to-yellow-50 rounded-2xl border border-amber-200">
+              <div className="flex items-center gap-4 mb-4">
+                <div className="flex gap-2">
+                  <div className="w-12 h-12 bg-orange-400 rounded-xl shadow-lg border-2 border-white"></div>
+                  <div className="w-12 h-12 bg-purple-400 rounded-xl shadow-lg border-2 border-white"></div>
+                </div>
+                <div>
+                  <h4 className="font-bold text-xl text-amber-900">สีเสริม</h4>
+                  <p className="text-amber-700 font-semibold">{dayInfo.additionalColors.primary}, {dayInfo.additionalColors.secondary}</p>
+                </div>
+              </div>
+              <p className="text-gray-800 font-medium">
                 {dayInfo.additionalColors.description}
               </p>
-              <div className="flex items-center gap-3">
-                <div className="w-8 h-8 bg-orange-400 rounded-full shadow-lg border-2 border-white"></div>
-                <div className="w-8 h-8 bg-purple-400 rounded-full shadow-lg border-2 border-white"></div>
-                <span className="text-base font-bold text-gray-800">{dayInfo.additionalColors.primary}, {dayInfo.additionalColors.secondary}</span>
-              </div>
             </div>
 
-            {/* Tips */}
-            <div className="space-y-4 bg-gradient-to-br from-blue-50 to-indigo-50 p-6 rounded-xl border border-blue-200">
-              <h4 className="font-bold text-xl text-blue-900 flex items-center gap-2">
-                <span className="w-8 h-8 bg-gradient-to-br from-blue-400 to-indigo-600 rounded-full flex items-center justify-center">
-                  <span className="text-white text-sm">💡</span>
-                </span>
-                เคล็ดลับ
-              </h4>
-              <p className="text-gray-800 leading-relaxed text-base font-medium">
-                ใส่สีประจำวันนี้เพื่อเสริมดวงและเพิ่มความมั่นใจในกิจกรรมต่างๆ
-              </p>
-              <div className="text-sm text-blue-800 bg-blue-100 px-4 py-2 rounded-full inline-block font-semibold">
-                ✨ เสริมดวงมงคล
+            {/* Tips Badge */}
+            <div className="text-center">
+              <div className="inline-flex items-center gap-2 bg-gradient-to-r from-purple-100 to-blue-100 px-6 py-3 rounded-full border border-purple-200">
+                <Sparkles className="h-4 w-4 text-purple-600" />
+                <span className="text-purple-800 font-semibold">ใส่สีนี้เพื่อเสริมดวงมงคล</span>
               </div>
             </div>
-          </div>
-        </CardContent>
-      </Card>
+          </CardContent>
+        </Card>
+      </div>
     </div>
   )
 } 

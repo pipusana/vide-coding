@@ -5,64 +5,270 @@ import Header from '@/components/header'
 import DailyColorSection from '@/components/daily-color-section'
 import DailyFortune from '@/components/daily-fortune'
 import ProductRecommendations from '@/components/product-recommendations'
+import { Facebook, Instagram, Twitter, Youtube, MessageCircle } from 'lucide-react'
 
 export default function Home() {
   const [selectedDate, setSelectedDate] = useState(new Date())
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50">
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 relative overflow-hidden">
+      {/* Extreme Animated Background */}
+      <div className="absolute inset-0 overflow-hidden">
+        {/* Large Floating Orbs */}
+        <div className="absolute -top-20 -left-20 w-96 h-96 bg-gradient-to-br from-purple-400/30 to-pink-400/30 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute top-1/4 -right-20 w-[500px] h-[500px] bg-gradient-to-br from-blue-400/30 to-indigo-400/30 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }}></div>
+        <div className="absolute bottom-10 left-1/3 w-80 h-80 bg-gradient-to-br from-emerald-400/30 to-teal-400/30 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '4s' }}></div>
+        
+        {/* Animated Grid Pattern */}
+        <div className="absolute inset-0 opacity-20">
+          <div className="w-full h-full" style={{
+            backgroundImage: `
+              linear-gradient(rgba(139, 92, 246, 0.1) 1px, transparent 1px),
+              linear-gradient(90deg, rgba(139, 92, 246, 0.1) 1px, transparent 1px)
+            `,
+            backgroundSize: '50px 50px',
+            animation: 'grid-move 20s linear infinite'
+          }}></div>
+        </div>
+
+        {/* Floating Particles */}
+        {Array.from({ length: 20 }).map((_, i) => (
+          <div
+            key={i}
+            className="absolute w-1 h-1 bg-white rounded-full animate-ping opacity-70"
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+              animationDelay: `${Math.random() * 5}s`,
+              animationDuration: `${2 + Math.random() * 3}s`
+            }}
+          />
+        ))}
+
+        {/* Gradient Overlays */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-purple-900/20"></div>
+        <div className="absolute inset-0 bg-gradient-radial from-transparent via-purple-500/5 to-transparent"></div>
+      </div>
+
       <Header selectedDate={selectedDate} />
       
-      {/* Hero Background */}
-      <div className="relative">
-        <div className="absolute inset-0 bg-gradient-to-br from-purple-600/20 via-blue-600/20 to-indigo-600/20"></div>
-        <div className="absolute inset-0 opacity-30" style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg width='20' height='20' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3Cpattern id='grid' width='20' height='20' patternUnits='userSpaceOnUse'%3E%3Cpath d='M 20 0 L 0 0 0 20' fill='none' stroke='%23f0f0f0' stroke-width='1' opacity='0.3'/%3E%3C/pattern%3E%3C/defs%3E%3Crect width='100%25' height='100%25' fill='url(%23grid)'/%3E%3C/svg%3E")`
-        }}></div>
+      {/* Extreme Hero Section */}
+      <div className="relative pt-24">
+        {/* 3D Floating Elements */}
+        <div className="absolute top-32 left-16 w-8 h-8 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-lg rotate-45 animate-bounce shadow-2xl" style={{ animationDelay: '1s', transform: 'perspective(1000px) rotateX(45deg)' }}></div>
+        <div className="absolute top-56 right-24 w-12 h-12 bg-gradient-to-br from-pink-400 to-rose-500 rounded-full animate-bounce shadow-2xl" style={{ animationDelay: '3s', transform: 'perspective(1000px) rotateY(45deg)' }}></div>
+        <div className="absolute bottom-48 left-32 w-6 h-6 bg-gradient-to-br from-purple-400 to-indigo-500 rounded-lg animate-bounce shadow-2xl" style={{ animationDelay: '5s', transform: 'perspective(1000px) rotateZ(45deg)' }}></div>
         
-        <main className="relative max-w-6xl mx-auto px-4 py-8 space-y-8">
-          {/* Daily Color Information */}
-          <DailyColorSection selectedDate={selectedDate} onDateChange={setSelectedDate} />
-          
-          {/* Daily Fortune Categories */}
-          <DailyFortune />
-          
-          {/* Product Recommendations */}
-          <ProductRecommendations />
+        <main className="relative max-w-8xl mx-auto px-4 py-16 space-y-20">
+          {/* Extreme Welcome Banner */}
+          <div className="text-center mb-20 relative">
+            {/* Background Glow */}
+            <div className="absolute inset-0 flex items-center justify-center">
+              <div className="w-[800px] h-[300px] bg-gradient-to-r from-purple-500/20 via-pink-500/20 to-blue-500/20 rounded-full blur-3xl"></div>
+            </div>
+            
+            <div className="relative z-10">
+              <div className="inline-flex items-center gap-4 bg-white/10 backdrop-blur-xl px-8 py-4 rounded-full shadow-2xl border border-white/20 mb-8 hover:bg-white/15 transition-all duration-500 hover:scale-105">
+                <div className="w-4 h-4 bg-gradient-to-r from-green-400 to-emerald-500 rounded-full animate-pulse shadow-lg"></div>
+                <span className="text-white font-bold text-lg">✨ ระบบดูดวงอัจฉริยะ AI ✨</span>
+                <div className="w-4 h-4 bg-gradient-to-r from-blue-400 to-purple-500 rounded-full animate-pulse shadow-lg"></div>
+              </div>
+              
+              <h1 className="text-7xl md:text-8xl font-black bg-gradient-to-r from-purple-300 via-pink-300 to-blue-300 bg-clip-text text-transparent mb-6 leading-tight relative">
+                <span className="relative inline-block">
+                  เสริมดวงด้วยสีมงคล
+                  <div className="absolute inset-0 bg-gradient-to-r from-purple-300 via-pink-300 to-blue-300 opacity-30 blur-2xl -z-10"></div>
+                </span>
+              </h1>
+              
+              <div className="max-w-4xl mx-auto mb-8">
+                <p className="text-2xl md:text-3xl text-gray-200 font-bold leading-relaxed">
+                  ค้นหาสีประจำวันที่เหมาะกับคุณ เพื่อ
+                  <span className="text-transparent bg-gradient-to-r from-yellow-300 to-orange-300 bg-clip-text"> เสริมโชคลาภ </span>
+                  และ
+                  <span className="text-transparent bg-gradient-to-r from-green-300 to-emerald-300 bg-clip-text"> ความมั่นใจ </span>
+                  ในชีวิตประจำวัน
+                </p>
+              </div>
+
+              {/* CTA Buttons */}
+              <div className="flex flex-wrap gap-6 justify-center mb-12">
+                <button className="group relative px-8 py-4 bg-gradient-to-r from-purple-600 via-pink-600 to-blue-600 rounded-2xl font-bold text-white text-lg shadow-2xl hover:shadow-purple-500/50 transition-all duration-500 hover:scale-110 hover:-translate-y-2">
+                  <span className="relative z-10">🔮 ดูดวงทันที</span>
+                  <div className="absolute inset-0 bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl"></div>
+                </button>
+                
+                <button className="group relative px-8 py-4 bg-white/10 backdrop-blur-xl border-2 border-white/20 rounded-2xl font-bold text-white text-lg shadow-2xl hover:bg-white/20 transition-all duration-500 hover:scale-110 hover:-translate-y-2">
+                  <span className="relative z-10">🌟 เรียนรู้เพิ่มเติม</span>
+                  <div className="absolute inset-0 bg-white/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl"></div>
+                </button>
+              </div>
+
+              {/* Floating Achievement Badges */}
+              <div className="flex flex-wrap gap-4 justify-center">
+                {[
+                  { icon: "👑", text: "อันดับ 1 ในไทย", gradient: "from-yellow-400 to-orange-500" },
+                  { icon: "⭐", text: "รีวิว 4.9/5", gradient: "from-blue-400 to-purple-500" },
+                  { icon: "🔥", text: "ใช้งานล่าสุด", gradient: "from-red-400 to-pink-500" },
+                  { icon: "💎", text: "พรีเมียม AI", gradient: "from-emerald-400 to-teal-500" }
+                ].map((badge, index) => (
+                  <div key={index} className={`inline-flex items-center gap-2 bg-gradient-to-r ${badge.gradient} px-4 py-2 rounded-full text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105`}>
+                    <span className="text-lg">{badge.icon}</span>
+                    <span className="text-sm">{badge.text}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Content Sections with Enhanced Animations */}
+          <div className="space-y-24">
+            <div className="relative group">
+              <div className="absolute inset-0 bg-gradient-to-r from-purple-500/20 to-blue-500/20 rounded-3xl blur-xl group-hover:blur-2xl transition-all duration-500"></div>
+              <div className="relative animate-slide-up" style={{ animationDelay: '0.2s' }}>
+                <DailyColorSection selectedDate={selectedDate} onDateChange={setSelectedDate} />
+              </div>
+            </div>
+            
+            <div className="relative group">
+              <div className="absolute inset-0 bg-gradient-to-r from-emerald-500/20 to-teal-500/20 rounded-3xl blur-xl group-hover:blur-2xl transition-all duration-500"></div>
+              <div className="relative animate-slide-up" style={{ animationDelay: '0.4s' }}>
+                <DailyFortune />
+              </div>
+            </div>
+            
+            <div className="relative group">
+              <div className="absolute inset-0 bg-gradient-to-r from-pink-500/20 to-rose-500/20 rounded-3xl blur-xl group-hover:blur-2xl transition-all duration-500"></div>
+              <div className="relative animate-slide-up" style={{ animationDelay: '0.6s' }}>
+                <ProductRecommendations />
+              </div>
+            </div>
+          </div>
+
+          {/* Extreme Stats Section */}
+          <div className="relative">
+            <div className="absolute inset-0 bg-gradient-to-r from-purple-600/30 via-pink-600/30 to-blue-600/30 rounded-3xl blur-2xl"></div>
+            <div className="relative grid grid-cols-2 md:grid-cols-4 gap-8 mt-20 p-8">
+              {[
+                { number: "500K+", label: "ผู้ใช้งานทั่วโลก", icon: "🌍", color: "from-blue-500 to-cyan-500" },
+                { number: "7", label: "สีมงคลเฉพาะตัว", icon: "🌈", color: "from-purple-500 to-pink-500" },
+                { number: "365", label: "คำทำนายต่อปี", icon: "📅", color: "from-emerald-500 to-teal-500" },
+                { number: "99.9%", label: "ความแม่นยำสูงสุด", icon: "🎯", color: "from-amber-500 to-orange-500" }
+              ].map((stat, index) => (
+                <div key={index} className="relative group">
+                  <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-white/10 rounded-3xl blur-xl group-hover:blur-2xl transition-all duration-500"></div>
+                  <div className="relative bg-white/10 backdrop-blur-xl rounded-3xl p-8 text-center shadow-2xl hover:shadow-3xl transition-all duration-500 hover:-translate-y-2 hover:scale-105 border border-white/20">
+                    <div className={`w-16 h-16 bg-gradient-to-br ${stat.color} rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-2xl group-hover:shadow-3xl transition-all duration-500 group-hover:scale-110`}>
+                      <span className="text-white text-2xl">{stat.icon}</span>
+                    </div>
+                    <div className="text-4xl md:text-5xl font-black text-white mb-2 group-hover:scale-110 transition-transform duration-500">{stat.number}</div>
+                    <div className="text-gray-300 font-semibold group-hover:text-white transition-colors duration-500">{stat.label}</div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
         </main>
       </div>
       
-      {/* Footer */}
-      <footer className="bg-gradient-to-r from-gray-900 via-purple-900 to-gray-900 text-white mt-16">
-        <div className="max-w-6xl mx-auto px-4 py-12">
-          <div className="text-center">
-            <div className="mb-6">
-              <h3 className="text-3xl font-bold bg-gradient-to-r from-purple-300 to-pink-300 bg-clip-text text-transparent mb-2">
+      {/* Ultra Modern Footer */}
+      <footer className="relative mt-32 bg-gradient-to-br from-black via-purple-900/50 to-black text-white overflow-hidden">
+        {/* Footer Background Effects */}
+        <div className="absolute inset-0">
+          <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-purple-500 to-transparent"></div>
+          <div className="absolute -top-32 -left-32 w-64 h-64 bg-purple-500/20 rounded-full blur-3xl animate-pulse"></div>
+          <div className="absolute -top-20 -right-32 w-80 h-80 bg-blue-500/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '3s' }}></div>
+          <div className="absolute bottom-0 left-1/2 w-96 h-96 bg-pink-500/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '6s' }}></div>
+        </div>
+
+        <div className="relative max-w-7xl mx-auto px-4 py-20">
+          <div className="text-center mb-16">
+            <div className="inline-flex items-center gap-4 mb-8">
+              <div className="relative">
+                <div className="w-16 h-16 bg-gradient-to-br from-purple-500 via-pink-500 to-blue-500 rounded-2xl flex items-center justify-center shadow-2xl">
+                  <span className="text-white font-bold text-3xl">🌈</span>
+                </div>
+                <div className="absolute -top-2 -right-2 w-8 h-8 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full flex items-center justify-center animate-spin" style={{ animationDuration: '3s' }}>
+                  <span className="text-white text-sm">✨</span>
+                </div>
+              </div>
+              <h3 className="text-5xl font-black bg-gradient-to-r from-purple-300 via-pink-300 to-blue-300 bg-clip-text text-transparent">
                 สีประจำวัน
               </h3>
-              <p className="text-gray-100 text-lg font-medium">
-                เสริมดวงด้วยสีมงคลประจำวัน
-              </p>
             </div>
             
-            <div className="border-t border-gray-700 pt-6">
-              <p className="text-base text-gray-200 mb-2 font-medium">
-                © 2024 สีประจำวัน - เสริมดวงด้วยสีมงคลประจำวัน
-              </p>
-              <p className="text-sm text-gray-300 font-medium">
-                ข้อมูลเกี่ยวกับดวงชะตาและสีมงคลในเว็บไซต์นี้ เป็นเพียงความเชื่อและความบันเทิงเท่านั้น
-              </p>
+            <p className="text-2xl text-gray-200 font-bold mb-12 max-w-3xl mx-auto">
+            เทคโนโลยี AI ผสานกับภูมิปัญญาไทย
+              <br />
+              <span className="text-transparent bg-gradient-to-r from-yellow-300 to-orange-300 bg-clip-text">เพื่อชีวิตที่เต็มไปด้วยสีสัน</span>
+            </p>
+
+            {/* Enhanced Social Links */}
+            <div className="flex justify-center gap-6 mb-12">
+              {[
+                { icon: <Facebook className="h-6 w-6 text-white" />, label: "Facebook", color: "from-blue-600 to-blue-700", hover: "hover:from-blue-500 hover:to-blue-600" },
+                { icon: <Instagram className="h-6 w-6 text-white" />, label: "Instagram", color: "from-pink-600 to-purple-700", hover: "hover:from-pink-500 hover:to-purple-600" },
+                { icon: <Twitter className="h-6 w-6 text-white" />, label: "Twitter", color: "from-sky-600 to-blue-700", hover: "hover:from-sky-500 hover:to-blue-600" },
+                { icon: <Youtube className="h-6 w-6 text-white" />, label: "YouTube", color: "from-red-600 to-red-700", hover: "hover:from-red-500 hover:to-red-600" },
+                { icon: <MessageCircle className="h-6 w-6 text-white" />, label: "Line", color: "from-green-600 to-emerald-700", hover: "hover:from-green-500 hover:to-emerald-600" }
+              ].map((social, index) => (
+                <button key={index} className={`group relative w-16 h-16 bg-gradient-to-br ${social.color} ${social.hover} rounded-2xl flex items-center justify-center shadow-2xl transition-all duration-500 hover:scale-110 hover:-translate-y-2`}>
+                  <span className="group-hover:scale-125 transition-transform duration-300">{social.icon}</span>
+                  <div className={`absolute inset-0 bg-gradient-to-br ${social.color} rounded-2xl opacity-0 group-hover:opacity-50 transition-opacity duration-500 blur-xl`}></div>
+                </button>
+              ))}
             </div>
-            
-            {/* Decorative elements */}
-            <div className="flex justify-center items-center mt-6 space-x-2">
-              <div className="w-2 h-2 bg-purple-400 rounded-full animate-pulse"></div>
-              <div className="w-2 h-2 bg-pink-400 rounded-full animate-pulse" style={{ animationDelay: '0.5s' }}></div>
-              <div className="w-2 h-2 bg-blue-400 rounded-full animate-pulse" style={{ animationDelay: '1s' }}></div>
-            </div>
+          </div>
+          
+          <div className="border-t border-gray-700/50 pt-12 text-center">
+            <p className="text-gray-200 font-bold text-lg mb-4">
+              © 2025 สีประจำวัน - ผู้นำเทคโนโลยีดูดวงแห่งอนาคต
+            </p>
+            <p className="text-gray-400 max-w-4xl mx-auto leading-relaxed">
+              ข้อมูลการทำนายและคำแนะนำในเว็บไซต์นี้ใช้เทคโนโลยี AI ผสานกับภูมิปัญญาไทย เพื่อการบันเทิงและแรงบันดาลใจในชีวิต
+            </p>
+          </div>
+
+          {/* Extreme Decorative elements */}
+          <div className="flex justify-center items-center mt-12 space-x-4">
+            <div className="w-3 h-3 bg-purple-400 rounded-full animate-ping"></div>
+            <div className="w-4 h-4 bg-pink-400 rounded-full animate-pulse"></div>
+            <div className="w-5 h-5 bg-blue-400 rounded-full animate-bounce"></div>
+            <div className="w-4 h-4 bg-emerald-400 rounded-full animate-pulse"></div>
+            <div className="w-3 h-3 bg-yellow-400 rounded-full animate-ping" style={{ animationDelay: '1s' }}></div>
           </div>
         </div>
       </footer>
+
+      {/* Advanced CSS Animations */}
+      <style jsx>{`
+        @keyframes fade-in {
+          from { opacity: 0; transform: translateY(30px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes slide-up {
+          from { opacity: 0; transform: translateY(60px) scale(0.95); }
+          to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        @keyframes grid-move {
+          0% { transform: translate(0, 0); }
+          100% { transform: translate(50px, 50px); }
+        }
+        
+        .animate-fade-in {
+          animation: fade-in 1.2s ease-out;
+        }
+        
+        .animate-slide-up {
+          animation: slide-up 1s ease-out both;
+        }
+
+        .bg-gradient-radial {
+          background: radial-gradient(circle at center, var(--tw-gradient-stops));
+        }
+      `}</style>
     </div>
   )
 }
