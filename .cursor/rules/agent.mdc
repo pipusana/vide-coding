@@ -1,0 +1,9 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+- Always using npm run build to check the lint
+- Always update Readme.md
+- Read agent artifact in .ai directory
+- Add or update agents artifact in .ai directory such as checklist.md, architecture.md and etc.

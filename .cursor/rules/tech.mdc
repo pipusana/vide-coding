@@ -1,0 +1,9 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+- For server side things perfer using "NextJS Server-side Action"
+- Using axios as a http client
+- Using Redis as main database
+- Using Shadcn as React UI Libs
